@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+#define maxn 85
+
+int main()
+{
+    int T, score = 0;
+    char s[maxn];
+    scanf("%d", &T);
+
+    while (T--)
+    {
+        int sum;
+        scanf("%s", s);
+        if (s[0] == 'O')
+            {
+                score = 1;
+                sum = 1;
+            }
+        else
+            {
+                score = 0;
+                sum = 0;
+            }
+        for (int i = 1; i<strlen(s); i++)
+        {
+            if(s[i] == 'O' && s[i-1] == 'O')
+                score ++;
+            else if (s[i] == 'O' && s[i-1] == 'X')
+                score = 1;
+            else
+                score = 0;
+            sum = sum + score;
+        }
+        printf("%d\n", sum);
+    }
+    return 0;
+}
