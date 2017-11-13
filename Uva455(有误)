@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+
+#define maxn 85
+
+int main()
+{
+    int time;
+    int i;
+    int T;
+    scanf("%d", &time);
+    char s[maxn];
+
+    while (time--)
+    {
+        scanf("%s", s);
+
+        for (i=1 ; i<strlen(s); i++)
+        {
+            bool m = 1;
+            if (s[0] == s[i] && strlen(s) % i == 0)
+             {
+                 for (int j=0; j+i<strlen(s); j++)
+                {
+                    if (s[j] != s[j+i])
+                        {
+                            m = !m;
+                            break;
+                        }
+                }
+                if (m)
+                    {
+                        T = i;
+                        break;
+                    }
+             }
+
+
+        }
+        if (i == strlen(s) - 1 || strlen(s) == 1)
+                T = strlen(s);
+           if (time == 0)
+            printf("%d\n", T);
+        else
+            printf("%d\n\n", T);
+
+    }
+    return 0;
+}
